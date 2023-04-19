@@ -1,16 +1,13 @@
 {
   "main": "./lib/keytar.js",
   "typings": "keytar.d.ts",
-  "name": "keytar",
+  "name": "@roamhq/keytar",
   "description": "Bindings to native Mac/Linux/Windows password APIs",
-  "version": "7.9.0",
+  "version": "7.9.1",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/atom/node-keytar.git"
-  },
-  "bugs": {
-    "url": "https://github.com/atom/node-keytar/issues"
+    "url": "https://github.com/WonderInventions/node-keytar.git"
   },
   "homepage": "http://atom.github.io/node-keytar",
   "keywords": [
