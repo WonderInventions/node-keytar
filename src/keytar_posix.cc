@@ -161,7 +161,18 @@ KEYTAR_OP_RESULT FindCredentials(const std::string& service,
       reinterpret_cast<char*>(g_hash_table_lookup(itemAttrs, "account")));
 
     SecretValue* secret = secret_item_get_secret(item);
-    char* password = strdup(secret_value_get_text(secret));
+
+    // See https://github.com/atom/node-keytar/issues/477 for more info on this patch
+    if (secret == NULL) {
+      // keystore is not open, secret is NULL which may lead to a crash in secret_value_get_text
+      continue;
+    }
+
+    const gchar* secret_text = secret_value_get_text(secret);
+    char* password = NULL;
+    if (secret_text != NULL) {
+      password = strdup(secret_text);
+    }
 
     if (account == NULL || password == NULL) {
       if (account)
